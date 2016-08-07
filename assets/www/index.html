@@ -1,0 +1,167 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<title>My Page</title> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<link rel="stylesheet" href="css/jquery.mobile-1.3.0.min.css" />
+	  <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	  <script type="text/javascript" src="js/jquery.mobile-1.3.0.min.js"></script>
+	  <script type="text/javascript" src="js/cordova.js"></script>
+	  <script type="text/javascript" src="js/index.js"></script>
+	  
+	</head> 
+  <body> 
+	
+	  <div data-role="page" id="index" data-theme="b" data-shadow="false">
+
+		<div data-role="header">
+		  <h1>BlackJack</h1>
+		</div>
+		<center><font size=2>By: Hrishi Hiraskar</font></center>
+
+		<div data-role="content" align="center">
+		  <img src="img/title.gif" style="position:absolute;top:20%;left:center;width:90%;"><br>
+		  
+		  <span style="position:absolute;top:60%;left:5%;width:90%"><a href="#main" data-role="button" data-inline="false">Play</a></span>
+		  
+		</div>
+		
+		<div data-role="footer" data-position="fixed" align="center">
+		  <button onclick="$('#howtoplay').popup('open');" data-role="button" class="ui-btn-left">How to play</button>
+		  <h1>BlackJack v1.0</h1>
+		  <button onclick="$('#about').popup('open');" data-role="#button" class="ui-btn-right">About Dev</button>
+		</div>
+		
+		
+		<div data-role="popup" id="howtoplay" class="ui-content" data-transition="pop">
+		  <center><b><u><font size=5>How to Play:</font></u></b></center><br>
+		  BlackJack is a simple casino card game, in which player plays to get his score 21 or near to it.<br>
+		  In BlackJack, one has to make his score 21 or near to it and also he has to score more than Dealer/CPU. Scoring 21 is BlackJack, you win and scoring more than 21 is burst, you lose.<br>
+		  Here, scoring is done on values of cards.Each face card(Joker,Queen or King) has value 10. An Ace card(A) may have value 1 or 10.Other cards have the same value of their numbers.<br>
+		  Some terms in BlackJack:<br>
+		  1. Hit - Draw a card from deck.<br>
+		  2. Stay - Stop the round.<br>
+		  You can also bet if you want.<br>
+		  <center><b>Enjoy!!!</b></center><br>
+		  <a href="#" data-role="button" data-rel="back">OK</a>
+		  
+		</div>
+
+		  
+		
+
+
+
+		<div data-role="popup" id="about" class="ui-content" data-transition="pop">
+		  <center><b><u><font size=5>About Dev:</font></u></b><br><br>
+			BlackJack v1.0<br>
+			By - Hrishi Hiraskar<br>
+			<b><u>Contact:</u></b><br>
+			Email: hrishihiraskar@gmail.com<br>
+			Visit Dev: <br><a href="http://www.facebook.com/hrishi.hiraskar7">http://www.facebook.com/hrishi.hiraskar7</a><br><br>
+
+
+			<a href="#" data-role="button" data-rel="back">OK</a>
+		  </center>
+		</div>
+		
+		
+		
+		
+		
+	  </div>
+	
+	
+	
+	
+	
+	
+	
+		<div data-role="page" id="main" data-theme="b" style="background:green" data-shadow="false">
+
+			<div data-role="header">
+			  <a href="#index" data-role="button" class="ui-btn-left">Back</a>
+				<h1>BlackJack</h1>
+			</div>
+		  <center><font size=2>By: Hrishi Hiraskar</font></center>
+
+			<div data-role="content" align="center">
+			 
+			  
+			  
+			  <span style="position:absolute;top:45%;left:5%">
+				Score:<span id="scorecp">0</span>
+			  </span>			  
+			  <span style="position:absolute;top:15%;left:25%">
+				<center><b>CPU</b></center>
+				<img id="crdcn0" width=25><img id="crdcs0" width=25><br>
+				<img id="crdcn1" width=25><img id="crdcs1" width=25><br>
+				<img id="crdcn2" width=25><img id="crdcs2" width=25><br>
+				<img id="crdcn3" width=25><img id="crdcs3" width=25><br>
+				<img id="crdcn4" width=25><img id="crdcs4" width=25><br>
+		 	  </span>
+			  <hr style="position:absolute;top:50%;width:98%;left:1%;">
+			  
+			  
+			  
+			  <span style="position:absolute;top:55%;left:25%">
+				<center><b><span id="user">User</span> </b></center>
+              <img id="crdun0" width=25><img id="crdus0" width=25><br>
+              <img id="crdun1" width=25><img id="crdus1" width=25><br>
+              <img id="crdun2" width=25><img id="crdus2" width=25><br>
+              <img id="crdun3" width=25><img id="crdus3" width=25><br>
+              <img id="crdun4" width=25><img id="crdus4" width=25><br>
+		 	  </span>
+			  <span style="position:absolute;top:88%;left:5%">
+              Score:<span id="scoreu">0</span>
+			  </span>
+			  <span id="btnstart" style="position:absolute;top:86%;left:40%;"> <button data-inline="true" data-mini="true" data-theme="a" onclick="startGame();" id="btnstr">Start</button></span>
+			  <span id="balan1" style="position:absolute;top:88%;left:70%;">Balance: 100</span>
+			  
+			</div>
+			
+			<div data-role="footer" id="btn" data-position="fixed" align="center">
+			  &nbsp;<button data-inline="true" data-role="button" onclick="if(user.stnum[0]!=null){user.hit();}" id="btnhit">Hit</button> &nbsp;&nbsp;     
+			  <button data-inline="true" onclick="if(user.stnum[0]!=null){user.stay();}" id="btnsty">Stay</button> &nbsp;&nbsp;
+			  <button data-inline="true" onclick="stopGame();">Stop</button> &nbsp;
+			</div>
+			
+			
+			<div data-role="popup" data-dismissible="false" id="result" class="ui-content" data-transition="pop" align="center">
+			  <b><span id="popupHtml"></span></b><br>
+			  <span id="bal"></span><br>
+			  <button data-rel="back" onclick="startRound();" data-inline="true">Continue</button><br>
+			  <button data-rel="back" onclick="$('#result').popup('close');stopGame()" data-inline="true">End Game</button><br>			  
+			</div>
+			
+			
+          <div data-role="popup" id="gameover" class="ui-content" data-transition="pop" align="center">
+			<center><b>Game Over!!!</b></center><br>
+			Balance: 0
+			<a href="#" data-rel="back" data-role="button">OK</a>
+		  </div>
+			
+			
+			
+		  <div data-role="popup" data-dismissible="false" id="popbet" class="ui-content" data-transition="pop" align="center">
+			<b>Place your bet:</b><br>
+			<input type="text" size=3 id="bet" placeholder="0">
+			<span id="balan">Balance: 100</span>
+			<font color="red"><span id="warn"></span></font><br>
+			<button data-rel="back" onclick="checkBet()" data-inline="true">Start</button>
+		  </div>
+
+		</div>
+		
+		
+
+	  
+		
+		
+		
+		
+		
+	
+		
+	</body>
+</html>
